@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.eclipse.xtext.validation.Check"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.ExpresionDecimal"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.ExpresionString"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.Expresion"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.ExpresionConcatenacion"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.OpAND"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.OpOR"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.OpXOR"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.OpEQ"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.OpNEQ"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.OpNEG"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.LlamadoVariable"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.ExpresionBooleana"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.LlamadoFuncion"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.Switch"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.Instruccion"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.DeclVariables"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.AsignacionVariable"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.Funciones"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.ExpresionAritmetica"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.OperacionesBooleanasDeComparacionAritmetica"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.ExpresionOperacionesBooleanas"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.OperadoresLogicosBooleanos"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.OperacionesBooleanasDeComparacion"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.LlamadoMetodo"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.ExpresionLongitudString"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.ExpresionStringVacio"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.Condicional"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.CondicionalElseIf"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.CaseSwitch"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.For"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.ExpresionNegativo"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.PolePackage"/>
+    <fullyQualifiedTypeName name="edu.upb.lp.isc.pole.PolePackage.Literals"/>
+</qualifiedTypeNameHistroy>

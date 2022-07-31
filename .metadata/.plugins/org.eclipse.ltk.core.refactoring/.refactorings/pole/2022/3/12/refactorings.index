@@ -1,0 +1,6 @@
+1647827869419	Rename method 'checkFuntionType'
+1647829731280	Rename method 'checkExpressionType'
+1647829804188	Rename method 'checkVariableForOperatorType'
+1647834315881	Rename method 'checkVariableForArithmeticOperatorType'
+1647834913715	Rename method 'checkFunctionForArithmeticOperatorType'
+1647838410524	Rename method 'compareTypes'

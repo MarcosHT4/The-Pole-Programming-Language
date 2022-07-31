@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: pole
+Bundle-ManifestVersion: 2
+Bundle-Name: pole
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: pole; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: edu.upb.lp.isc.services,
+ edu.upb.lp.isc.generator,
+ edu.upb.lp.isc.pole,
+ edu.upb.lp.isc.serializer,
+ edu.upb.lp.isc,
+ edu.upb.lp.isc.pole.impl,
+ edu.upb.lp.isc.validation,
+ edu.upb.lp.isc.parser.antlr.internal,
+ edu.upb.lp.isc.parser.antlr,
+ edu.upb.lp.isc.scoping,
+ edu.upb.lp.isc.pole.util
+Import-Package: org.apache.log4j

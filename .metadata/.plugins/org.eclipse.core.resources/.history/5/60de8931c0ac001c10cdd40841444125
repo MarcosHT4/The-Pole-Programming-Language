@@ -1,0 +1,341 @@
+grammar edu.upb.lp.isc.Pole with org.eclipse.xtext.common.Terminals
+
+generate pole "http://www.upb.edu/lp/isc/Pole"
+
+
+
+Programa:
+	
+	name = ID "PO"
+	
+	
+	ej=(Ejecucion)
+	
+	
+	"LE"
+	
+;
+
+Ejecucion:
+	
+	instr+=Instruccion+
+	
+;
+
+Instruccion: //Explicar Joseph
+	
+	DeclVariables | Imprimir | Condicional | Switch | For | While | DoWhile | Funciones | AsignacionVariable | LlamadoMetodo
+	
+;
+
+LlamadoMetodo: //Explicar Joseph
+	
+	"EYYOLVIDONA" method=[Funciones] "("("EY" args+=Expresion)*")"
+	
+;
+
+Funciones:
+	
+	"OIGO" tipoDeDato=TipoDeDato name=ID ("MUY" param+=DeclVariables2)* 
+		(instr+=Instruccion)*
+		("PEROMUY" e=Expresion)? 
+	"BORROSO"
+	
+	
+;
+
+
+
+
+
+Imprimir:
+	
+	"PARATICONDESPRECIO" (e=Expresion) ("@" e1+=Expresion)*
+	
+;
+
+
+Condicional:
+	 
+	  expr=ExpresionBooleana
+	  "GG?"
+	  	"WITHTEAM"
+	  		instr+=Instruccion*
+	  	
+	  	(casiTeam+=CondicionalElseIf)*
+	  		
+	     ("NOTEAM"
+	     	instrElse+=Instruccion*)?
+	     	
+	  "EZ"   	
+	
+;
+
+
+
+CondicionalElseIf:
+	
+	"CASITEAM" "("exprELIF=ExpresionBooleana")" 
+		(instrELIF += Instruccion)*
+		
+	
+	
+;
+
+
+
+Switch:
+	
+	var=LlamadoVariable "RULETARUSA?"
+		 (case += CaseSwitch)+ //Validator? Verificar que la expresion concuerde con la variable
+	"BOOM"	
+		
+	
+;
+
+
+
+CaseSwitch:
+	
+	"BALA" (e=Expresion) instr+=Instruccion*
+	
+
+;
+
+
+
+For:
+	
+	// x++
+	// x -> x+1
+	
+	"CHOCO" name=ID (var = DeclVariables) "YVOLO" (expr=ExpresionBooleana) "YYOVOLE" asig=AsignacionVariable
+		(instr+=Instruccion)*	
+	"YSEFUE"	 
+	// Problema con variable, como hacer que la variable declarada aqui, pase a ser una declaracion de variable como tal
+;
+
+While:
+	
+	"SA" name=ID "MATAO" expr=ExpresionBooleana
+		(instr+=Instruccion)*
+	"PACO"	
+	
+;
+
+DoWhile:
+	
+	"AHITEVAMI" name=ID
+		(instr+=Instruccion)*
+	"DOLOR" expr=ExpresionBooleana	
+	
+;
+
+DeclVariables:
+	
+	"PEREMENNAYA" tipoDeDato=TipoDeDato name=ID "->" valor=Expresion //Delimitar expresion con el Validator?
+	
+;
+
+DeclVariables2 returns DeclVariables:
+	tipoDeDato=TipoDeDato name=ID
+;
+
+AsignacionVariable:
+	
+	variable = [DeclVariables] "->" valor=Expresion 
+	
+;
+
+TipoDeDato:
+	
+	"DALAS" | "MRBEAST" | "XOKAS" | "YINYANG" | "MICORAZON" //DALAS = String, MRBEAST= Int, XOKAS = Double, YING = Boolean, MICORAZON = Void
+	
+;
+
+Expresion:
+	
+	ExpresionDecimal | ExpresionString | ExpresionBooleana |  LlamadoVariable | LlamadoFuncion //Problema con la gramatica ambigua
+	
+;
+
+LlamadoVariable:
+	
+	variable=[DeclVariables]
+	
+;
+
+LlamadoFuncion:
+	
+	"EYYOLVIDONA" func=[Funciones] "("("EY" args+=Expresion)*")" //Validator, podemos verificar que si o si devuelve algo?
+															//Validator, numero de argumentos
+															//Esto lo hace ambigua a la gramatica :C
+	
+;
+
+ExpresionDecimal:
+	
+	ExpresionAritmetica | ExpresionSimpleAritmetica | ExpresionSimpleXokas
+	
+	
+;
+
+ExpresionSimpleXokas:
+	
+	x = INT '.' y=INT (('e'|'E') '-'? z=INT)?
+	
+;
+
+ExpresionSimpleAritmetica:
+	
+	x=INT 
+;
+
+
+
+
+ExpresionAritmetica:
+	
+	 (Suma | Resta | Multiplicacion | Division | Modulo)
+	
+	
+;
+
+Suma:
+	
+	"SUMA" op=Operacion
+	
+;
+
+Resta:
+	
+	"RESTA" op=Operacion
+	
+;
+
+Multiplicacion:
+	
+	"MULTIPLICACION" op=Operacion
+	
+;
+
+Division:
+	
+	"DIVISION" op=Operacion
+	
+;
+
+Modulo:
+	
+	"MODULO" op=Operacion
+	
+;
+
+Operacion:
+	
+	"JULIOPROFE" izq=Expresion "Y" der=Expresion
+	
+;
+
+ExpresionString:
+	
+	ExpresionConcatenacion | ExpresionSimpleString
+	
+;
+
+ExpresionSimpleString:
+	
+	 x=STRING
+;
+
+
+ExpresionConcatenacion:
+	
+	"LA" primero=Expresion "GOTITA" segundo=Expresion
+	 
+;
+
+ExpresionBooleana:
+	
+	ExpresionOperacionesBooleanas | ExpresionBooleanaSimple
+	
+;
+
+ExpresionOperacionesBooleanas:
+	
+	OperacionesBooleanasDeComparacion |  OperacionesBooleanasDeComparacionAritmetica | OperadoresLogicosBooleanos | OpNEG
+	
+;
+
+OperacionesBooleanasDeComparacion:
+	
+	x=("POXI" | "AGUA") izq = Expresion y=("POL" | "RRAS") der = Expresion
+	//PEPE PANDA -> AND
+	//NAR ANJA -> OR
+	//XO R -> XOR
+	//POXI POL -> EQ
+	// AGUA RRAS -> NEQ
+;
+
+
+// true && false
+// if(3 != 4)
+
+OperadoresLogicosBooleanos:
+	
+	x=("PEPE" | "NAR" | "XO") izq = Expresion y=("PANDA" | "ANJA" | "R") der = Expresion 
+	
+	
+;
+
+
+OperacionesBooleanasDeComparacionAritmetica:
+	
+	x=("LEGAL" | "ILEGAL" | "ALEGAL" | "ANTILEGAL") (op=OpComp)
+	//LEGAL -> >
+	//ILEGAL -> <
+	//ALEGAL -> >=
+	//ANTILEGAL -> <=
+	
+	
+	
+;
+
+
+
+OpNEG:
+	
+	"ALVERRES" expr=Expresion
+	
+;
+
+
+
+OpComp:
+	
+	izq = Expresion "CON" der = Expresion
+	
+;
+
+ExpresionBooleanaSimple:
+	
+	x = ("YIN" | "YANG")
+	
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

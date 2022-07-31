@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pole" nsURI="http://www.upb.edu/lp/isc/Pole" nsPrefix="pole">
+  <eClassifiers xsi:type="ecore:EClass" name="Programa">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ej" eType="#//Ejecucion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ejecucion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instr" upperBound="-1"
+        eType="#//Instruccion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Instruccion"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LlamadoMetodo" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="method" eType="#//Funciones"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Funciones" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tipoDeDato" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="param" upperBound="-1"
+        eType="#//DeclVariables" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instr" upperBound="-1"
+        eType="#//Instruccion" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Imprimir" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e1" upperBound="-1" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImprimirSinSaltoDeLinea" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e1" upperBound="-1" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condicional" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instr" upperBound="-1"
+        eType="#//Instruccion" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="casiTeam" upperBound="-1"
+        eType="#//CondicionalElseIf" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instrElse" upperBound="-1"
+        eType="#//Instruccion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CondicionalElseIf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exprELIF" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instrELIF" upperBound="-1"
+        eType="#//Instruccion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Switch" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//LlamadoVariable"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="case" upperBound="-1" eType="#//CaseSwitch"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CaseSwitch">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instr" upperBound="-1"
+        eType="#//Instruccion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="For" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//DeclVariables"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//ExpresionBooleana"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="asig" eType="#//AsignacionVariable"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instr" upperBound="-1"
+        eType="#//Instruccion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="While" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instr" upperBound="-1"
+        eType="#//Instruccion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DoWhile" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instr" upperBound="-1"
+        eType="#//Instruccion" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeclVariables" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tipoDeDato" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valor" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AsignacionVariable" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//DeclVariables"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valor" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expresion"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LlamadoVariable" eSuperTypes="#//Expresion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//DeclVariables"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LlamadoFuncion" eSuperTypes="#//Expresion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="func" eType="#//Funciones"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionDecimal" eSuperTypes="#//Expresion"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionNegativo" eSuperTypes="#//ExpresionDecimal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionSimpleXokas" eSuperTypes="#//ExpresionDecimal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="z" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionSimpleAritmetica" eSuperTypes="#//ExpresionDecimal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionLongitudString" eSuperTypes="#//ExpresionDecimal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="llamado" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionAritmetica" eSuperTypes="#//ExpresionDecimal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="op" eType="#//Operacion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Suma" eSuperTypes="#//ExpresionAritmetica"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Resta" eSuperTypes="#//ExpresionAritmetica"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Multiplicacion" eSuperTypes="#//ExpresionAritmetica"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Division" eSuperTypes="#//ExpresionAritmetica"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Modulo" eSuperTypes="#//ExpresionAritmetica"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operacion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="izq" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="der" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionString" eSuperTypes="#//Expresion"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionSimpleString" eSuperTypes="#//ExpresionString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionConcatenacion" eSuperTypes="#//ExpresionString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="primero" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="segundo" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionBooleana" eSuperTypes="#//Expresion"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionOperacionesBooleanas" eSuperTypes="#//ExpresionBooleana"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OperacionesBooleanasDeComparacion" eSuperTypes="#//ExpresionOperacionesBooleanas">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="izq" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="der" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionStringVacio" eSuperTypes="#//ExpresionOperacionesBooleanas">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="llamado" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperadoresLogicosBooleanos" eSuperTypes="#//ExpresionOperacionesBooleanas">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="izq" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="der" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperacionesBooleanasDeComparacionAritmetica"
+      eSuperTypes="#//ExpresionOperacionesBooleanas">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="op" eType="#//OpComp" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OpNEG" eSuperTypes="#//ExpresionOperacionesBooleanas">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OpComp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="izq" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="der" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpresionBooleanaSimple" eSuperTypes="#//ExpresionBooleana">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

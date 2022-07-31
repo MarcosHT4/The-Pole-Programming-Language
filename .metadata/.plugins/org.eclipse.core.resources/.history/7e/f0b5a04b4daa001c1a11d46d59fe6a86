@@ -1,0 +1,304 @@
+grammar edu.upb.lp.isc.Pole with org.eclipse.xtext.common.Terminals
+
+generate pole "http://www.upb.edu/lp/isc/Pole"
+
+
+
+Programa:
+	
+	"PO"
+	
+	
+	ej=(Ejecucion)
+	
+	
+	"LE"
+	
+;
+
+Ejecucion:
+	
+	instr+=Instruccion+
+	
+;
+
+Instruccion:
+	
+	DeclVariables | Imprimir | Condicional | Switch | For | While | DoWhile | Funciones | AsignacionVariable 
+	
+;
+
+Funciones:
+	
+	"OIGO" tipoDeDato=TipoDeDato name=ID ("MUY" param+=DeclVariables2)* //Que sea variable 
+		(instr+=Instruccion)*
+		("PEROMUY" e=Expresion)? //Que los parametros, cuenten como variables
+	"BORROSO"
+	
+	
+;
+
+Imprimir:
+	
+	"PARATICONDESPRECIO" (e=Expresion)
+	
+;
+
+Condicional:
+	 
+	  expr=ExpresionBooleana
+	  "GG?"
+	  	"WITHTEAM"
+	  		instrUno+=Instruccion*
+	  	
+	  	("CASITEAM" expr2=ExpresionBooleana
+	  		instrDos+=Instruccion*)?	
+	  		
+	     "NOTEAM"
+	     	instrTres+=Instruccion*
+	     	
+	  "EZ"   	
+	
+;
+
+Switch:
+	
+	var=LlamadoVariable "RULETARUSA?"
+		 ("BALA" (e+=Expresion) instr+=Instruccion*)+ //Validator? Verificar que la expresion concuerde con la variable
+	"BOOM"	
+		
+	
+;
+
+For:
+	
+	"CHOCO" name=ID ("GATORADE" | "DIAZEPAM") "YVOLO" (var = DeclVariables2) "YYOVOLE" expr=ExpresionBooleana
+		(instr+=Instruccion)*	
+	"YSEFUE"	 
+	// Problema con variable, como hacer que la variable declarada aqui, pase a ser una declaracion de variable como tal
+;
+
+While:
+	
+	"SA" name=ID "MATAO" expr=ExpresionBooleana
+		(instr+=Instruccion)*
+	"PACO"	
+	
+;
+
+DoWhile:
+	
+	"AHITEVAMI" name=ID
+		(instr+=Instruccion)*
+	"DOLOR" expr=ExpresionBooleana	
+	
+;
+
+DeclVariables:
+	
+	"PEREMENNAYA" tipoDeDato=TipoDeDato name=ID "->" valor=Expresion //Delimitar expresion con el Validator?
+	
+;
+
+DeclVariables2 returns DeclVariables:
+	tipoDeDato=TipoDeDato name=ID
+;
+
+AsignacionVariable:
+	
+	variable = [DeclVariables] "->" valor=Expresion 
+	
+;
+
+TipoDeDato:
+	
+	"DALAS" | "MRBEAST" | "XOKAS" | "YINYANG" //DALAS = String, MRBEAST= Int, XOKAS = Double, YING = Boolean, CARMEN = Lista
+	
+;
+
+Expresion:
+	
+	ExpresionDecimal | ExpresionString | ExpresionBooleana |  LlamadoVariable | LlamadoFuncion //Problema con la gramatica ambigua
+	
+;
+
+LlamadoVariable:
+	
+	variable=[DeclVariables]
+	
+;
+
+LlamadoFuncion:
+	
+	"EYYOLVIDONA" func=[Funciones] "("("EY" args+=Expresion)*")" //Validator, podemos verificar que si o si devuelve algo?
+															//Validator, numero de argumentos
+															//Esto lo hace ambigua a la gramatica :C
+	
+;
+
+ExpresionDecimal:
+	
+	ExpresionAritmetica | ExpresionSimpleAritmetica | ExpresionSimpleXokas
+	
+	
+;
+
+ExpresionSimpleXokas:
+	
+	x = INT '.' INT ('e'|'E' '-'? INT)?
+	
+;
+
+ExpresionSimpleAritmetica:
+	
+	x=INT 
+;
+
+
+
+
+ExpresionAritmetica:
+	
+	 (Suma | Resta | Multiplicacion | Division | Modulo)
+	
+	
+;
+
+Suma:
+	
+	"SUMA" op=Operacion
+	
+;
+
+Resta:
+	
+	"RESTA" op=Operacion
+	
+;
+
+Multiplicacion:
+	
+	"MULTIPLICACION" op=Operacion
+	
+;
+
+Division:
+	
+	"DIVISION" op=Operacion
+	
+;
+
+Modulo:
+	
+	"MODULO" op=Operacion
+	
+;
+
+Operacion:
+	
+	"JULIOPROFE" izq=Expresion "Y" der=Expresion
+	
+;
+
+ExpresionString:
+	
+	ExpresionConcatenacion | ExpresionSimpleString
+	
+;
+
+ExpresionSimpleString:
+	
+	 x=STRING
+;
+
+
+ExpresionConcatenacion:
+	
+	"LA" primero=Expresion "GOTITA" segundo=Expresion
+	 
+;
+
+ExpresionBooleana:
+	
+	ExpresionOperacionesBooleanas | ExpresionBooleanaSimple
+	
+;
+
+ExpresionOperacionesBooleanas:
+	
+	OperacionesBooleanasDeComparacion |  OperacionesBooleanasDeComparacionAritmetica | OperadoresLogicosBooleanos | OpNEG
+	
+;
+
+OperacionesBooleanasDeComparacion:
+	
+	"POXI" izq = Expresion "POL" der = Expresion|"AGUA" izq = Expresion "RRAS" der=Expresion
+	//PEPE PANDA -> AND
+	//NAR ANJA -> OR
+	//XO R -> XOR
+	//POXI POL -> EQ
+	// AGUA RRAS -> NEQ
+;
+
+
+// true && false
+// if(3 != 4)
+
+OperadoresLogicosBooleanos:
+	
+	"PEPE" izq = Expresion "PANDA" der = Expresion |"NAR" izq = Expresion "ANJA" der = Expresion |"XO" izq = Expresion "R" der = Expresion
+	
+	
+;
+
+
+OperacionesBooleanasDeComparacionAritmetica:
+	
+	("LEGAL" | "ILEGAL" | "ALEGAL" | "ANTILEGAL") (op=OpComp)
+	//LEGAL -> >
+	//ILEGAL -> <
+	//ALEGAL -> >=
+	//ANTILEGAL -> <=
+	
+	
+	
+;
+
+
+
+OpNEG:
+	
+	"ALVERRES" expr=Expresion
+	
+;
+
+
+
+OpComp:
+	
+	izq = Expresion "CON" der = Expresion
+	
+;
+
+ExpresionBooleanaSimple:
+	
+	x = ("YIN" | "YANG")
+	
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

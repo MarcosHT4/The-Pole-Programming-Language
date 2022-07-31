@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "http://www.upb.edu/lp/isc/Pole"
+			class = "edu.upb.lp.isc.pole.PolePackage"
+			genModel = "model/generated/Pole.genmodel" />
+	</extension>
+</plugin>
